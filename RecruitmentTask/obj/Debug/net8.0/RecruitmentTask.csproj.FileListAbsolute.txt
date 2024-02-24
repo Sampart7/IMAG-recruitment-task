@@ -161,3 +161,4 @@ C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTask\obj\Debu
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTask\obj\Debug\net8.0\RecruitmentTask.genruntimeconfig.cache
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTask\obj\Debug\net8.0\ref\RecruitmentTask.dll
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTask\obj\Debug\net8.0\RecruitmentTask.sourcelink.json
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTask\bin\Debug\net8.0\Newtonsoft.Json.dll

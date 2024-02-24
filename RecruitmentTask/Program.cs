@@ -4,8 +4,16 @@ using RecruitmentTask.Components;
 using RecruitmentTask.Data;
 using RecruitmentTask.Interfaces;
 using RecruitmentTask.Repositories;
+using RecruitmentTaskShared.Entities;
+using System.Text.Json.Serialization;
+// using RecruitmentTaskShared.Paging;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers().AddJsonOptions(options => {
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    // options.JsonSerializerOptions.Converters.Add(new PagedListConverter<Customer>());
+});
 
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<HttpClient>();
@@ -16,7 +24,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
-builder.Services.AddControllers();
+builder.Services.AddCors();
 
 builder.Services.AddDbContext<DataContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -41,6 +49,8 @@ app.MapControllers();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+
+app.UseCors("AllowAll");
 
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RecruitmentTask.Interfaces;
 using RecruitmentTaskShared.Entities;
+using RecruitmentTaskShared.Paging;
 
 namespace RecruitmentTask.Controllers
 {
@@ -16,10 +17,17 @@ namespace RecruitmentTask.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetAllCustomersAsync()
+        public async Task<ActionResult<PagedList<Customer>>> 
+            GetAllCustomersAsync([FromQuery] PaginationParams paginationParams)
         {
-            var customers = await _unitOfWork.CustomerRepository.GetCustomersAsync();
+            var customers = await _unitOfWork.CustomerRepository.GetCustomersAsync(paginationParams);
             if (customers == null) return NotFound("Customers not found");
+
+            var paginationHeader = new PaginationHeader(customers.CurrentPage, 
+                customers.PageSize, customers.TotalCount, customers.TotalPages);
+
+            Response.Headers.Add("Pagination", 
+                Newtonsoft.Json.JsonConvert.SerializeObject(paginationHeader));
 
             return Ok(customers);
         }

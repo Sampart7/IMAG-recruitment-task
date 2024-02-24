@@ -4,10 +4,35 @@
 @inject HttpClient Http
 @inject NavigationManager NavManager
 @using RecruitmentTaskShared.Entities
+@using RecruitmentTaskShared.Paging
 
 <PageTitle>Customers</PageTitle>
 
-<h1>Customers</h1>
+<div>
+    <h1>Customers</h1>
+
+    <label for="pageSizeSelect">Items per page:</label>
+    <select id="pageSizeSelect" class="form-control" @onchange="ChangePageSize">
+        <option value="10" selected>10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="50">50</option>
+    </select>
+
+    <label for="sortBySelect">Sort By:</label>
+    <select id="sortBySelect" class="form-control" @onchange="ChangeSortBy">
+        <option value="id">ID</option>
+        <option value="name">Name</option>
+        <option value="address">Address</option>
+        <option value="nip">NIP</option>
+    </select>
+
+    <label for="sortDirectionSelect">Sort Direction:</label>
+    <select id="sortDirectionSelect" class="form-control" @onchange="ChangeSortDirection">
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+    </select>
+</div>
 
 @if (customers.Count == 0)
 {
@@ -47,11 +72,22 @@ else
         </tbody>
     </table>
 }
-<button class="btn btn-primary" @onclick="AddCustomer">Add Customer</button>
+
+<div>
+    <button class="btn btn-lg" disabled="@IsPrevButtonDisabled" @onclick="LoadPrevPage">Previous</button>
+    <button class="btn btn-lg" disabled="@IsNextButtonDisabled" @onclick="LoadNextPage">Next</button>
+    <button class="btn btn-primary" @onclick="AddCustomer">Add Customer</button>
+</div>
 
 @code {
     List<Customer> customers = new List<Customer>();
-
+    private int CurrentPage = 1;
+    private int PageSize = 10;
+    private string SortBy = "id";
+    private bool SortDescending = false;
+    private bool IsPrevButtonDisabled => CurrentPage == 1;
+    private bool IsNextButtonDisabled => customers.Count < PageSize;
+    
     protected override async Task OnInitializedAsync()
     {
         await LoadCustomers();
@@ -75,8 +111,64 @@ else
 
     async Task LoadCustomers()
     {
-        var result = await Http.GetFromJsonAsync<List<Customer>>("api/customers");
-        if(result != null)
-            customers = result;
+        string parameters = $"?pageNumber={CurrentPage}" +
+                            $"&pageSize={PageSize}" +
+                            $"&sortBy={SortBy}" +
+                            $"&sortDescending={SortDescending}";
+
+        var response = await Http.GetAsync($"api/customers{parameters}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            var content = await response.Content.ReadAsStringAsync();
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<PagedList<Customer>>(content);
+
+            if (result != null) customers = result.ToList();
+        }
+
+        StateHasChanged();
+    }
+
+    void LoadPrevPage()
+    {
+        if (!IsPrevButtonDisabled)
+        {
+            CurrentPage--;
+            LoadCustomers();
+            StateHasChanged();
+        }
+    }
+
+    void LoadNextPage()
+    {
+        if (!IsNextButtonDisabled)
+        {
+            CurrentPage++;
+            LoadCustomers();
+            StateHasChanged();
+        }
+    }
+    void ChangeSortBy(ChangeEventArgs args)
+    {
+        SortBy = args.Value.ToString();
+        CurrentPage = 1;
+        LoadCustomers();
+    }
+
+    void ChangeSortDirection(ChangeEventArgs args)
+    {
+        SortDescending = !SortDescending;
+        CurrentPage = 1;
+        LoadCustomers();
+    }
+
+    void ChangePageSize(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value.ToString(), out int selectedPageSize))
+        {
+            PageSize = selectedPageSize;
+            CurrentPage = 1;
+            LoadCustomers();
+        }
     }
 }
