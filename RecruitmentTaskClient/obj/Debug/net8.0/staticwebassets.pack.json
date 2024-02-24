@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTaskClient\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTaskClient\\obj\\Debug\\net8.0\\compressed\\z2nvmijqp9.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTaskClient\\wwwroot\\appsettings.Development.json",
+      "PackagePath": "staticwebassets\\appsettings.Development.json"
+    },
+    {
+      "Id": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTaskClient\\wwwroot\\appsettings.json",
+      "PackagePath": "staticwebassets\\appsettings.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.RecruitmentTaskClient.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.RecruitmentTaskClient.props",
+      "PackagePath": "build\\RecruitmentTaskClient.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.RecruitmentTaskClient.props",
+      "PackagePath": "buildMultiTargeting\\RecruitmentTaskClient.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.RecruitmentTaskClient.props",
+      "PackagePath": "buildTransitive\\RecruitmentTaskClient.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

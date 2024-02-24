@@ -1,0 +1,12 @@
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\bin\Debug\net8.0\RecruitmentTaskShared.deps.json
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\bin\Debug\net8.0\RecruitmentTaskShared.dll
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\bin\Debug\net8.0\RecruitmentTaskShared.pdb
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\RecruitmentTaskShared.csproj.AssemblyReference.cache
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\RecruitmentTaskShared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\RecruitmentTaskShared.AssemblyInfoInputs.cache
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\RecruitmentTaskShared.AssemblyInfo.cs
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\RecruitmentTaskShared.csproj.CoreCompileInputs.cache
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\RecruitmentTaskShared.dll
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\refint\RecruitmentTaskShared.dll
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\RecruitmentTaskShared.pdb
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\ref\RecruitmentTaskShared.dll

@@ -1,0 +1,82 @@
+@page "/customers"
+@attribute [StreamRendering]
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
+@inject HttpClient Http
+@inject NavigationManager NavManager
+@using RecruitmentTaskShared.Entities
+
+<PageTitle>Customers</PageTitle>
+
+<h1>Customers</h1>
+
+@if (customers.Count == 0)
+{
+    <h3>Customers not found</h3>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>NIP</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in customers)
+            {
+                <tr>
+                    <td>@customer.Id</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Address</td>
+                    <td>@customer.NIP</td>
+                    <td>
+                        <button class="btn btn-primary" 
+                            @onclick="@(() => EditCustomer(@customer.Id))">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" 
+                            @onclick="@(() => DeleteCustomer(@customer.Id))">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<button class="btn btn-primary" @onclick="AddCustomer">Add Customer</button>
+
+@code {
+    List<Customer> customers = new List<Customer>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCustomers();
+    }
+
+    void AddCustomer()
+    {
+        NavManager.NavigateTo("edit-customer");
+    }
+
+    void EditCustomer(int id)
+    {
+        NavManager.NavigateTo($"edit-customer/{id}");
+    }
+
+    async Task DeleteCustomer(int id)
+    {
+        await Http.DeleteAsync($"api/customers/{id}");
+        await LoadCustomers();
+    }
+
+    async Task LoadCustomers()
+    {
+        var result = await Http.GetFromJsonAsync<List<Customer>>("api/customers");
+        if(result != null)
+            customers = result;
+    }
+}

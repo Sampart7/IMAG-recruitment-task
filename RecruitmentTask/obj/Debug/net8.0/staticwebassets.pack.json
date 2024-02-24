@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTask\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\RecruitmentTask.bundle.scp.css",
+      "PackagePath": "staticwebassets\\RecruitmentTask.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTask\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTask\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTask\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTask\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.RecruitmentTask.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.RecruitmentTask.props",
+      "PackagePath": "build\\RecruitmentTask.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.RecruitmentTask.props",
+      "PackagePath": "buildMultiTargeting\\RecruitmentTask.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.RecruitmentTask.props",
+      "PackagePath": "buildTransitive\\RecruitmentTask.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
