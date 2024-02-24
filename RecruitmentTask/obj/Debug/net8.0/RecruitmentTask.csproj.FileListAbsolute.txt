@@ -160,3 +160,4 @@ C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTask\obj\Debu
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTask\obj\Debug\net8.0\RecruitmentTask.pdb
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTask\obj\Debug\net8.0\RecruitmentTask.genruntimeconfig.cache
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTask\obj\Debug\net8.0\ref\RecruitmentTask.dll
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTask\obj\Debug\net8.0\RecruitmentTask.sourcelink.json

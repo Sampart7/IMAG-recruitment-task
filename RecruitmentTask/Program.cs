@@ -2,11 +2,15 @@ using Microsoft.EntityFrameworkCore;
 using RecruitmentTaskClient.Pages;
 using RecruitmentTask.Components;
 using RecruitmentTask.Data;
+using RecruitmentTask.Interfaces;
+using RecruitmentTask.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<HttpClient>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

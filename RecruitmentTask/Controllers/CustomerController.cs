@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using RecruitmentTask.Data;
+using RecruitmentTask.Interfaces;
 using RecruitmentTaskShared.Entities;
 
 namespace RecruitmentTask.Controllers
@@ -9,62 +8,64 @@ namespace RecruitmentTask.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private readonly DataContext _ctx;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CustomerController(DataContext ctx)
+        public CustomerController(IUnitOfWork unitOfWork)
         {
-            _ctx = ctx;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Customer>>> GetAllCustomersAsync() 
+        public async Task<ActionResult<IEnumerable<Customer>>> GetAllCustomersAsync()
         {
-            return await _ctx.Customers.ToListAsync();
+            var customers = await _unitOfWork.CustomerRepository.GetCustomersAsync();
+            if (customers == null) return NotFound("Customers not found");
+
+            return Ok(customers);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Customer>> GetCustomerAsync(int id) 
+        public async Task<ActionResult<Customer>> GetCustomerAsync(int id)
         {
-            var result = await _ctx.Customers.FindAsync(id);
-            if (result == null) return NotFound("Customer not found");
+            var customer = await _unitOfWork.CustomerRepository.GetCustomerByIdAsync(id);
+            if (customer == null) return NotFound("Customer not found");
 
-            return Ok(result);
+            return Ok(customer);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Customer>> AddCustomersAsync(Customer newCustomer) 
+        public async Task<ActionResult<Customer>> AddCustomersAsync(Customer newCustomer)
         {
-            _ctx.Add(newCustomer);
-            await _ctx.SaveChangesAsync();
+            _unitOfWork.CustomerRepository.AddCustomerAsync(newCustomer);
+            if (await _unitOfWork.CompleteAsync()) return Ok();
 
-            return Ok();
+            return BadRequest("Failed to add customer");
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCustomersAsync(int id) 
+        public async Task<IActionResult> DeleteCustomersAsync(int id)
         {
-            var result = await _ctx.Customers.FindAsync(id);
-            if (result == null) return NotFound("Customer not found");
+            _unitOfWork.CustomerRepository.DeleteCustomerAsync(id);
+            if (await _unitOfWork.CompleteAsync()) return Ok();
 
-            _ctx.Remove(result);
-            await _ctx.SaveChangesAsync();
-
-            return Ok();
+            return BadRequest("Failed to delete customer");
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Customer>> UpdateCustomersAsync(int id, Customer customer) 
+        public async Task<ActionResult<Customer>> UpdateCustomersAsync(int id, Customer customer)
         {
-            var result = await _ctx.Customers.FindAsync(id);
-            if (result == null) return NotFound("Customer not found");
+            var existingCustomer = await _unitOfWork.CustomerRepository.GetCustomerByIdAsync(id);
+            if (existingCustomer == null) return NotFound("Customer not found");
 
-            result.Name = customer.Name;
-            result.Address = customer.Address;
-            result.NIP = customer.NIP;
+            existingCustomer.Name = customer.Name;
+            existingCustomer.Address = customer.Address;
+            existingCustomer.NIP = customer.NIP;
 
-            await _ctx.SaveChangesAsync();
+            _unitOfWork.CustomerRepository.UpdateCustomerAsync(existingCustomer);
 
-            return Ok();
+            if (await _unitOfWork.CompleteAsync()) return Ok(existingCustomer);
+
+            return BadRequest("Failed to update customer");
         }
     }
 }

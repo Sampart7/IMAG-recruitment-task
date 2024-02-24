@@ -10,3 +10,4 @@ C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\ob
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\refint\RecruitmentTaskShared.dll
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\RecruitmentTaskShared.pdb
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\ref\RecruitmentTaskShared.dll
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskShared\obj\Debug\net8.0\RecruitmentTaskShared.sourcelink.json

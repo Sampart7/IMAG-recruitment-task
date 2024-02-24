@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "RecruitmentTaskClient",
   "resources": {
-    "hash": "sha256-/sQN70OTUtyI8v3p/VDApv3ic4PETjvlyCjU2feI8fQ=",
+    "hash": "sha256-EQf9fQugbhtbvWSg/vus9lSud1qjXkxRM6nqbolP8NQ=",
     "jsModuleNative": {
       "dotnet.native.8.0.2.z5sre1son0.js": "sha256-gPMK16QWoJSTxorlZJqcVtbBRTniIQWlLsJN2O4cJHg="
     },
@@ -208,12 +208,12 @@
       "mscorlib.wasm": "sha256-OH3kXneWqQMz6CUSo6POZqIeMqn9+5RR+IgHn5TnIwA=",
       "netstandard.wasm": "sha256-ZOswxXEbR2TmqjpbaBEdgr85Bv1NC4GwOwoJ+oxXM3M=",
       "System.Private.CoreLib.wasm": "sha256-I2w0iHf5nvSQyF1YE1VbgdTzmmz6a4OE6J7vo5wFa/4=",
-      "RecruitmentTaskShared.wasm": "sha256-GN5eT2l3JYiQEhvI4qlCW27rVHgHmQ12i9Rjez9YpsA=",
-      "RecruitmentTaskClient.wasm": "sha256-YGtQUzjOhdTYMaJruc60VU8T6ev4tCpUHimjhjJCPPM="
+      "RecruitmentTaskShared.wasm": "sha256-V0SMi2pbcw2rhngqhPq6ZMp9jaQXcvnZs+x8jtmsi9Y=",
+      "RecruitmentTaskClient.wasm": "sha256-zsUpAx6sMW2nVWqFRVD/1ng0jTCSJXC3CzI6PDTFNuI="
     },
     "pdb": {
-      "RecruitmentTaskShared.pdb": "sha256-CjXXbN4zJFy/822NbN1Bfn37aAg7DuH/Y9xm4oUGAVE=",
-      "RecruitmentTaskClient.pdb": "sha256-g412oLBI7AlxjS1Q3I5cnVONllm179ZqQ5HOReWYt8I="
+      "RecruitmentTaskShared.pdb": "sha256-SX+dR9JSCUNPQ/19DBLzwQ6730MIjc6LQxfWmoBQ1UQ=",
+      "RecruitmentTaskClient.pdb": "sha256-pcCiZpu1l4kv4pMSFF44GvJkyW4RS4B4hfKIpGXanIU="
     }
   },
   "cacheBootResources": true,
