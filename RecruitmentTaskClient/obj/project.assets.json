@@ -59,6 +59,28 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Components.QuickGrid/8.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "8.0.2"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Components.QuickGrid.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Components.QuickGrid.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Microsoft.AspNetCore.Components.QuickGrid.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.AspNetCore.Components.QuickGrid.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Components.Web/8.0.2": {
         "type": "package",
         "dependencies": {
@@ -1575,6 +1597,28 @@
           "lib/net8.0/Microsoft.AspNetCore.Components.Forms.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "Microsoft.AspNetCore.Components.QuickGrid/8.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "8.0.2"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Components.QuickGrid.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Components.QuickGrid.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Microsoft.AspNetCore.Components.QuickGrid.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.AspNetCore.Components.QuickGrid.props": {}
         }
       },
       "Microsoft.AspNetCore.Components.Web/8.0.2": {
@@ -3096,6 +3140,27 @@
         "lib/net8.0/Microsoft.AspNetCore.Components.Forms.xml",
         "microsoft.aspnetcore.components.forms.8.0.2.nupkg.sha512",
         "microsoft.aspnetcore.components.forms.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Components.QuickGrid/8.0.2": {
+      "sha512": "OppS7ZLEwgdScK7klYuD5lY0CojwlHRXSGTvaQnTDcktlLK1vPV+Tw2ZHpLl9B1Yh8SSSL+mkRm1eFjNsL3ccQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components.quickgrid/8.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/Microsoft.AspNetCore.Components.QuickGrid.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Microsoft.AspNetCore.Components.QuickGrid.props",
+        "buildTransitive/Microsoft.AspNetCore.Components.QuickGrid.props",
+        "lib/net8.0/Microsoft.AspNetCore.Components.QuickGrid.dll",
+        "lib/net8.0/Microsoft.AspNetCore.Components.QuickGrid.xml",
+        "microsoft.aspnetcore.components.quickgrid.8.0.2.nupkg.sha512",
+        "microsoft.aspnetcore.components.quickgrid.nuspec",
+        "staticwebassets/Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
+        "staticwebassets/QuickGrid.razor.js"
       ]
     },
     "Microsoft.AspNetCore.Components.Web/8.0.2": {
@@ -6596,6 +6661,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Microsoft.AspNetCore.Components.QuickGrid >= 8.0.2",
       "Microsoft.AspNetCore.Components.WebAssembly >= 8.0.2",
       "Microsoft.NET.ILLink.Tasks >= 8.0.2",
       "Microsoft.NET.Sdk.WebAssembly.Pack >= 8.0.2",
@@ -6609,11 +6675,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTaskClient\\RecruitmentTaskClient.csproj",
+      "projectUniqueName": "c:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTaskClient\\RecruitmentTaskClient.csproj",
       "projectName": "RecruitmentTaskClient",
-      "projectPath": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTaskClient\\RecruitmentTaskClient.csproj",
+      "projectPath": "c:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTaskClient\\RecruitmentTaskClient.csproj",
       "packagesPath": "C:\\Users\\Michał Janaszek\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTaskClient\\obj\\",
+      "outputPath": "c:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTaskClient\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Michał Janaszek\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -6649,6 +6715,10 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Components.QuickGrid": {
+            "target": "Package",
+            "version": "[8.0.2, )"
+          },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
             "version": "[8.0.2, )"

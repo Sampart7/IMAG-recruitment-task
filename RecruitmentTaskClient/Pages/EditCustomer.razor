@@ -3,6 +3,9 @@
 @rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
 @inject HttpClient Http
 @inject NavigationManager NavManager
+@using System.ComponentModel.DataAnnotations
+@using System.Collections.Generic
+@using System.Linq
 
 <PageTitle>Edit Customer</PageTitle>
 
@@ -30,18 +33,13 @@ else
         <label for="NIP">NIP</label>
         <InputNumber id="NIP" @bind-Value="ThisCustomer.NIP" class="form-control"></InputNumber>
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary" disabled="@(!IsValid())">Save</button>
 </EditForm>
 
 @code {
     [Parameter]
     public int? Id { get; set; }
     public Customer ThisCustomer { get; set; } = new Customer();
-
-    JsonSerializerOptions jsonOptions = new JsonSerializerOptions
-    {
-        PropertyNameCaseInsensitive = true
-    };
     protected override async Task OnParametersSetAsync()
     {
         if (Id != null)
@@ -70,8 +68,21 @@ else
     async Task HandleHttpResponse(HttpResponseMessage result)
     {
         if (result.Content.Headers.ContentType?.MediaType == "application/json")
-            ThisCustomer = await result.Content.ReadFromJsonAsync<Customer>(jsonOptions);
+        {
+            var content = await result.Content.ReadAsStringAsync();
+            ThisCustomer = JsonConvert.DeserializeObject<Customer>(content);
+        }
         else
+        {
             Console.WriteLine($"Error: Unexpected content type");
+        }
+    }
+
+    bool IsValid()
+    {
+        var context = new ValidationContext(ThisCustomer, null, null);
+        var results = new List<ValidationResult>();
+
+        return Validator.TryValidateObject(ThisCustomer, context, results, true);
     }
 }

@@ -4,95 +4,47 @@
 @inject HttpClient Http
 @inject NavigationManager NavManager
 @using RecruitmentTaskShared.Entities
-@using RecruitmentTaskShared.Paging
+@using Microsoft.AspNetCore.Components.QuickGrid
 
 <PageTitle>Customers</PageTitle>
 
 <div>
     <h1>Customers</h1>
-
-    <label for="pageSizeSelect">Items per page:</label>
-    <select id="pageSizeSelect" class="form-control" @onchange="ChangePageSize">
-        <option value="10" selected>10</option>
-        <option value="20">20</option>
-        <option value="30">30</option>
-        <option value="50">50</option>
-    </select>
-
-    <label for="sortBySelect">Sort By:</label>
-    <select id="sortBySelect" class="form-control" @onchange="ChangeSortBy">
-        <option value="id">ID</option>
-        <option value="name">Name</option>
-        <option value="address">Address</option>
-        <option value="nip">NIP</option>
-    </select>
-
-    <label for="sortDirectionSelect">Sort Direction:</label>
-    <select id="sortDirectionSelect" class="form-control" @onchange="ChangeSortDirection">
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-    </select>
 </div>
+<div class="grid">
+    <QuickGrid ItemsProvider="provider" pagination="@pagination">
+        <PropertyColumn Property="@(p => p.Id)" Sortable="true" IsDefaultSortColumn="true"/>
+        <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
+        <PropertyColumn Property="@(p => p.Address)" Sortable="true" />
+        <PropertyColumn Property="@(p => p.NIP)" Sortable="true" />
+        <TemplateColumn Title="Actions">
+            <button class="btn btn-primary" @onclick="@(() => EditCustomer(context.Id))">Edit</button>
+            <button class="btn btn-primary" @onclick="@(() => DeleteCustomer(context.Id))">Delete</button>
+        </TemplateColumn>
+    </QuickGrid>
 
-@if (customers.Count == 0)
-{
-    <h3>Customers not found</h3>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>NIP</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var customer in customers)
-            {
-                <tr>
-                    <td>@customer.Id</td>
-                    <td>@customer.Name</td>
-                    <td>@customer.Address</td>
-                    <td>@customer.NIP</td>
-                    <td>
-                        <button class="btn btn-primary" 
-                            @onclick="@(() => EditCustomer(@customer.Id))">Edit</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-danger" 
-                            @onclick="@(() => DeleteCustomer(@customer.Id))">Delete</button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-
-<div>
-    <button class="btn btn-lg" disabled="@IsPrevButtonDisabled" @onclick="LoadPrevPage">Previous</button>
-    <button class="btn btn-lg" disabled="@IsNextButtonDisabled" @onclick="LoadNextPage">Next</button>
-    <button class="btn btn-primary" @onclick="AddCustomer">Add Customer</button>
+    <Paginator State="@pagination" />
+    <div>
+        <button class="btn btn-success" @onclick="AddCustomer">Add Customer</button>
+    </div>
 </div>
-
 @code {
     List<Customer> customers = new List<Customer>();
-    private int CurrentPage = 1;
-    private int PageSize = 10;
-    private string SortBy = "id";
-    private bool SortDescending = false;
-    private bool IsPrevButtonDisabled => CurrentPage == 1;
-    private bool IsNextButtonDisabled => customers.Count < PageSize;
-    
+    PaginationState pagination = new PaginationState { ItemsPerPage = 10 };
+    GridItemsProvider<Customer> provider;
     protected override async Task OnInitializedAsync()
     {
-        await LoadCustomers();
-    }
+        provider = async req => {
+            var sortByAsc = req.SortByAscending;
+            var sortByColumn = req.SortByColumn!.Title;
+            var result = await Http.GetFromJsonAsync<CustomerResponse>
+                ($"api/customers?skip={req.StartIndex}&take={req.Count}&sortByAsc={sortByAsc}&column{sortByColumn}");
 
+            StateHasChanged();
+
+            return GridItemsProviderResult.From(items: result.Customers, totalItemCount: result.Count);
+        };
+    }
     void AddCustomer()
     {
         NavManager.NavigateTo("edit-customer");
@@ -106,69 +58,5 @@ else
     async Task DeleteCustomer(int id)
     {
         await Http.DeleteAsync($"api/customers/{id}");
-        await LoadCustomers();
-    }
-
-    async Task LoadCustomers()
-    {
-        string parameters = $"?pageNumber={CurrentPage}" +
-                            $"&pageSize={PageSize}" +
-                            $"&sortBy={SortBy}" +
-                            $"&sortDescending={SortDescending}";
-
-        var response = await Http.GetAsync($"api/customers{parameters}");
-
-        if (response.IsSuccessStatusCode)
-        {
-            var content = await response.Content.ReadAsStringAsync();
-            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<PagedList<Customer>>(content);
-
-            if (result != null) customers = result.ToList();
-        }
-
-        StateHasChanged();
-    }
-
-    void LoadPrevPage()
-    {
-        if (!IsPrevButtonDisabled)
-        {
-            CurrentPage--;
-            LoadCustomers();
-            StateHasChanged();
-        }
-    }
-
-    void LoadNextPage()
-    {
-        if (!IsNextButtonDisabled)
-        {
-            CurrentPage++;
-            LoadCustomers();
-            StateHasChanged();
-        }
-    }
-    void ChangeSortBy(ChangeEventArgs args)
-    {
-        SortBy = args.Value.ToString();
-        CurrentPage = 1;
-        LoadCustomers();
-    }
-
-    void ChangeSortDirection(ChangeEventArgs args)
-    {
-        SortDescending = !SortDescending;
-        CurrentPage = 1;
-        LoadCustomers();
-    }
-
-    void ChangePageSize(ChangeEventArgs args)
-    {
-        if (int.TryParse(args.Value.ToString(), out int selectedPageSize))
-        {
-            PageSize = selectedPageSize;
-            CurrentPage = 1;
-            LoadCustomers();
-        }
     }
 }

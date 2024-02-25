@@ -1091,3 +1091,8 @@ C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskClient\bi
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskClient\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskClient\obj\Debug\net8.0\webcil\Newtonsoft.Json.wasm
 C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskClient\obj\Debug\net8.0\compressed\cab9y2ik4i.gz
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskClient\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.QuickGrid.wasm
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskClient\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.QuickGrid.wasm.gz
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskClient\bin\Debug\net8.0\Microsoft.AspNetCore.Components.QuickGrid.dll
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskClient\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.QuickGrid.wasm
+C:\Users\Michał Janaszek\Desktop\IMAG-recruitment-task\RecruitmentTaskClient\obj\Debug\net8.0\compressed\cdp62n2r2d.gz

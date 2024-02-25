@@ -1,11 +1,11 @@
 using RecruitmentTaskShared.Entities;
-using RecruitmentTaskShared.Paging;
 
 namespace RecruitmentTask.Interfaces
 {
     public interface ICustomerRepository
     {
-        Task<PagedList<Customer>> GetCustomersAsync(PaginationParams paginationParams);
+        Task<List<Customer>> GetCustomersAsync(int skip, int take, bool sortByAsc, string column);
+        Task<int> GetAmountOfCustomers();
         Task<Customer> GetCustomerByIdAsync(int id);
         void AddCustomerAsync(Customer newCustomer);
         void UpdateCustomerAsync(Customer customer);

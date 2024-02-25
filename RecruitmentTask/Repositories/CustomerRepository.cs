@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using RecruitmentTask.Data;
 using RecruitmentTaskShared.Entities;
 using RecruitmentTask.Interfaces;
-using RecruitmentTaskShared.Paging;
 
 namespace RecruitmentTask.Repositories
 {
@@ -15,42 +14,23 @@ namespace RecruitmentTask.Repositories
             _ctx = ctx;
         }
 
-        public async Task<PagedList<Customer>> GetCustomersAsync(PaginationParams paginationParams)
+        public async Task<List<Customer>> GetCustomersAsync(int skip, int take, bool sortByAsc, string column)
         {
             var query = _ctx.Customers.AsQueryable();
 
-            if (!string.IsNullOrEmpty(paginationParams.SortBy))
+            query = column switch
             {
-                switch (paginationParams.SortBy.ToLower())
-                {
-                    case "id":
-                        query = paginationParams.SortDescending
-                            ? query.OrderByDescending(c => c.Id)
-                            : query.OrderBy(c => c.Id);
-                        break;
-                    case "name":
-                        query = paginationParams.SortDescending
-                            ? query.OrderByDescending(c => c.Name)
-                            : query.OrderBy(c => c.Name);
-                        break;
-                    case "address":
-                        query = paginationParams.SortDescending
-                            ? query.OrderByDescending(c => c.Address)
-                            : query.OrderBy(c => c.Address);
-                        break;
-                    case "nip":
-                        query = paginationParams.SortDescending
-                            ? query.OrderByDescending(c => c.NIP)
-                            : query.OrderBy(c => c.NIP);
-                        break;
-                }
-            }
+                "Id" => sortByAsc ? query.OrderBy(x => x.Id) : query.OrderByDescending(x => x.Id),
+                "Name" => sortByAsc ? query.OrderBy(x => x.Name) : query.OrderByDescending(x => x.Name),
+                "Address" => sortByAsc ? query.OrderBy(x => x.Address) : query.OrderByDescending(x => x.Address),
+                "NIP" => sortByAsc ? query.OrderBy(x => x.NIP) : query.OrderByDescending(x => x.NIP),
+                _ => query.OrderBy(x => x.Id)
+            };
 
-            return await PagedList<Customer>
-                .CreateAsync(query, paginationParams.PageNumber, paginationParams.PageSize);
+            return await query.Skip(skip).Take(take).ToListAsync();
         }
 
-        public async Task<Customer?> GetCustomerByIdAsync(int id)
+        public async Task<Customer> GetCustomerByIdAsync(int id)
         {
             return await _ctx.Customers.FirstOrDefaultAsync(c => c.Id == id);
         }
@@ -69,6 +49,11 @@ namespace RecruitmentTask.Repositories
         {
             var customer = _ctx.Customers.FirstOrDefault(c => c.Id == id);
             if (customer != null) _ctx.Customers.Remove(customer);
+        }
+
+        public Task<int> GetAmountOfCustomers()
+        {
+            return _ctx.Customers.CountAsync();
         }
     }
 }

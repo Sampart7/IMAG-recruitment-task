@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dw5w4xECOht62SHqBEAaETtP7LfF1HOjuso9HgNLh73EC20ozEHlqopBoboF1LfYg9ePBIofBFVjaEsFar7gyw==",
+  "dgSpecHash": "wBVczEsgTj7xhowyOl5FB/yNpgD5HkT8tseo13Wjy4PQCw/xqDrpMouvvCqccjaYMFgNRi6/1dm8Dw1GL87ETA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Michał Janaszek\\Desktop\\IMAG-recruitment-task\\RecruitmentTask\\RecruitmentTask.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\Michał Janaszek\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.2\\microsoft.aspnetcore.components.8.0.2.nupkg.sha512",
     "C:\\Users\\Michał Janaszek\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\8.0.2\\microsoft.aspnetcore.components.analyzers.8.0.2.nupkg.sha512",
     "C:\\Users\\Michał Janaszek\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\8.0.2\\microsoft.aspnetcore.components.forms.8.0.2.nupkg.sha512",
+    "C:\\Users\\Michał Janaszek\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.2\\microsoft.aspnetcore.components.quickgrid.8.0.2.nupkg.sha512",
     "C:\\Users\\Michał Janaszek\\.nuget\\packages\\microsoft.aspnetcore.components.web\\8.0.2\\microsoft.aspnetcore.components.web.8.0.2.nupkg.sha512",
     "C:\\Users\\Michał Janaszek\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\8.0.2\\microsoft.aspnetcore.components.webassembly.8.0.2.nupkg.sha512",
     "C:\\Users\\Michał Janaszek\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.server\\8.0.2\\microsoft.aspnetcore.components.webassembly.server.8.0.2.nupkg.sha512",

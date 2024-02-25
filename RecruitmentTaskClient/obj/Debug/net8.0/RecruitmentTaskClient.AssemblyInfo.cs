@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RecruitmentTaskClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7abc67104ad4b9f173aa3600c9ea859fe902e0e5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+493648138511fc9fa23d31338439c7bdca41752e")]
 [assembly: System.Reflection.AssemblyProductAttribute("RecruitmentTaskClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RecruitmentTaskClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
