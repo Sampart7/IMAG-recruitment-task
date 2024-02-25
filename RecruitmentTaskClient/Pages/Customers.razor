@@ -19,7 +19,7 @@
         <PropertyColumn Property="@(p => p.NIP)" Sortable="true" />
         <TemplateColumn Title="Actions">
             <button class="btn btn-primary" @onclick="@(() => EditCustomer(context.Id))">Edit</button>
-            <button class="btn btn-primary" @onclick="@(() => DeleteCustomer(context.Id))">Delete</button>
+            <button class="btn btn-danger" @onclick="@(() => DeleteCustomer(context.Id))">Delete</button>
         </TemplateColumn>
     </QuickGrid>
 
@@ -36,15 +36,14 @@
     {
         provider = async req => {
             var sortByAsc = req.SortByAscending;
-            var sortByColumn = req.SortByColumn!.Title;
-            var result = await Http.GetFromJsonAsync<CustomerResponse>
-                ($"api/customers?skip={req.StartIndex}&take={req.Count}&sortByAsc={sortByAsc}&column{sortByColumn}");
-
-            StateHasChanged();
+            var sortByColumn = req.SortByColumn.Title;
+            var result = await Http.GetFromJsonAsync<CustomerResponse>(
+                $"api/customers?skip={req.StartIndex}&take={req.Count}&sortByAsc={sortByAsc}&column={sortByColumn}");
 
             return GridItemsProviderResult.From(items: result.Customers, totalItemCount: result.Count);
         };
     }
+
     void AddCustomer()
     {
         NavManager.NavigateTo("edit-customer");

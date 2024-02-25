@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RecruitmentTaskShared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+493648138511fc9fa23d31338439c7bdca41752e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2e52a4a0e892d096a7198ef18f82221b37fe12c")]
 [assembly: System.Reflection.AssemblyProductAttribute("RecruitmentTaskShared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RecruitmentTaskShared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
